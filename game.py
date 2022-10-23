@@ -18,7 +18,7 @@ class Player(GameSprite):
       keys = key.get_pressed()
       if [k_up] and self.rect.y > 5:
         self.rect.y -= self.speed
-        if [k_down] and self.rect.y < 420:
+      if [k_down] and self.rect.y < 420:
         self.rect.y += self.speed
   def update_left(self):
     pass
