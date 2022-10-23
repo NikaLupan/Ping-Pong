@@ -3,17 +3,29 @@ from pygame import *
 
 #клас батько
 class GameSprite(sprite/Sprite):
-  def __init__(self):
-    pass
+  def __init__(self, player_image, p_x, p_y, p_speed, width, height):
+      super().__init__()
+      self.image = transform.scale(image.load(player_image), (width, height))
+      self.speed = p_speed
+      self.rect = self.image.get_rect()
+      self.rect.x = p_x
+      self.rect.y = p_y
   def reset(self):
-    pass
+      window.blit(self_image,  (self.rect.x, self.rect.y))
 # клас для ракеток 
 class Player(GameSprite):
   def update_right(self):
-    pass
+      keys = key.get_pressed()
+      if [k_up] and self.rect.y > 5:
+        self.rect.y -= self.speed
+        if [k_down] and self.rect.y < 420:
+        self.rect.y += self.speed
   def update_left(self):
     pass
   
+  racket_right = Player("recket_r.png", 520, 200, 4, 50, 150)
+  
+  ball = GameSprite("ball.png", 200,200,4,50,50)
   win_width = 600
   win_height = 500
   
@@ -30,6 +42,16 @@ class Player(GameSprite):
   
   #ігровий цикл
   while game:
-    for e in event.get(): #перевірка всіх подій
-      if e.type == QUIT #тип подій - закрити вікно
-      game = False #закінчуємо цикл while
+      for e in event.get(): #перевірка всіх подій
+          if e.type == QUIT #тип подій - закрити вікно
+              game = False #закінчуємо цикл while
+      if finish != True:
+          window.fill(fon)
+          racket_right.update_right()
+          racket_left.update_left()
+          racket_right.reset()
+          racket_left.reset()
+          ball.reset()
+      display.update()
+      clock.tick(FPS)
+          
