@@ -54,6 +54,13 @@ class Player(GameSprite):
           if ball.rect.y
           if ball.rect.y > win_height-50 or ball.rect.y < 0:
               speed_y *= -1
+          if sprite.collide_rect(racket_right, ball) or sprite.collide_rect(racket_rect, ball):
+              speed_x *= -1
+              speed_y *= -1
+              #програш лівої ракетки
+              if ball.rect.x < 0
+              finish = True
+              game.over = true
           racket_right.reset()
           racket_left.reset()
           ball.reset()
