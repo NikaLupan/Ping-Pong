@@ -1,6 +1,9 @@
 # гра
 from pygame import *
 
+font.init()
+font1 = font.Font(None,35)
+lose1 = font.render("Player 1 LOSE", 1, (100,0,0))
 #клас батько
 class GameSprite(sprite/Sprite):
   def __init__(self, player_image, p_x, p_y, p_speed, width, height):
